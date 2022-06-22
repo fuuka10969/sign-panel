@@ -29,9 +29,9 @@
 </template>
 <script>
 import SignPanel from '../packages';
+
 export default {
-  components:{SignPanel},
-  data(){
+  data() {
     return {
       name: '熊学江',
       nameList: [],
@@ -43,14 +43,14 @@ export default {
   created() {
     this.init();
   },
-  methods:{
+  methods: {
     init() {
       this.nameList = this.name.split('')
     },
     /**
      * 清除画板
      */
-    canvasClear(){
+    canvasClear() {
       this.$refs.signPanel.canvasClear();
       this.imgList = []
       this.activeIndex = 0
@@ -59,13 +59,13 @@ export default {
     /**
      * 提交签名
      */
-    submitImg(){
+    submitImg() {
     },
     /**
      * 验证并更新文字
      */
     handleCompare(val) {
-      if(val && this.imgList.length < this.nameList.length) {
+      if (val && this.imgList.length < this.nameList.length) {
         // 验证签名是否正确
           // const params = {
           // }
@@ -94,7 +94,7 @@ export default {
               verifyResult: true,
               taskResult: 'success'
             }
-            if(res.verifyResult) {
+            if (res.verifyResult) {
               this.imgList.push(val)
               this.activeIndex += 1
               if (this.imgList.length === this.nameList.length) {
@@ -107,7 +107,10 @@ export default {
       }
     },
 
-  }
+  },
+  components: {
+    'sign-panel': SignPanel
+  },
 }
 </script>
 <style lang="less">
