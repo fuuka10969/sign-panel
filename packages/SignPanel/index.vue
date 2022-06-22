@@ -83,7 +83,7 @@ export default {
     },
     color: {
       type: String,
-      default: '#ff0000'
+      default: '#101010'
     },
     lineCap: {
       type: String,
