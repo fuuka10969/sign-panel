@@ -134,11 +134,20 @@ export default {
       dpr: 1,
       writeDoneTimer: null,
       resizeTimer: null,
+      penWidth: 4,
     };
+  },
+  watch: {
+    signText(val, oldVal) {
+      if(val !== oldVal) {
+        this.canvasClear()
+      }
+    },
+    deep: true,
+    immediate: true,
   },
   mounted() {
     this.init();
-    
     window.addEventListener('resize',  this.resizeCanvasInit, true)
   },
 
@@ -281,7 +290,7 @@ export default {
       if (this.isSign) {
         context.lineWidth = this.writeWidth * dpr;
       } else {
-        const lineWidth = this.writeWidth = this.writeWidth / 4 * 3 + returnNum / 4
+        const lineWidth = this.penWidth = this.writeWidth / 4 * 3 + returnNum / 4
         context.lineWidth = lineWidth * dpr;
       }
     },
