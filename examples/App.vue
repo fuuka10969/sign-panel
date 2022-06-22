@@ -12,9 +12,10 @@
     </div>
     <sign-panel
       class="sign-canvas"
-      ref="SignCanvas"
-      :currentText="nameList[activeIndex]"
-      @compare="handleCompare"
+      ref="signPanel"
+      :signText="nameList[activeIndex]"
+      :lastWriteSpeed="4"
+      @confirm="handleCompare"
     />
     <div class="confirm-text">已输入文字</div>
     <div class="view-list">
@@ -50,7 +51,7 @@ export default {
      * 清除画板
      */
     canvasClear(){
-      this.$refs.SignCanvas.canvasClear();
+      this.$refs.signPanel.canvasClear();
       this.imgList = []
       this.activeIndex = 0
     },
@@ -104,20 +105,6 @@ export default {
             }
           }, 100);
       }
-    },
-
-    /**
-     * 下载图片
-     */
-    downloadSignImg(){
-      this.$refs.SignCanvas.downloadSignImg();
-    },
-
-    /**
-     * 下载dealImage图片
-     */
-    dealImage(){
-      this.$refs.SignCanvas.dealImage();
     },
 
   }
