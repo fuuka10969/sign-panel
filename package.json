@@ -2,7 +2,7 @@
   "name": "sign-panel",
   "version": "1.0.0",
   "description": "基于canvas和vue的签名面板",
-  "main": "index.js",
+  "main": "lib/sign-panel.umd.min.js",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
