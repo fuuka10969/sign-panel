@@ -33,7 +33,7 @@ import SignPanel from '../packages';
 export default {
   data() {
     return {
-      name: '熊学江',
+      name: '测试试',
       nameList: [],
       imgList: [],
       activeIndex: 0,
