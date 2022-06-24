@@ -294,9 +294,9 @@ export default {
       returnNum = returnNum.toFixed(2);
       // 写字模式和签名模式
       if (this.isSign) {
-        context.lineWidth = this.writeWidth * dpr;
+        context.lineWidth = this.penWidth * dpr;
       } else {
-        const lineWidth = (this.penWidth = (this.writeWidth / 4) * 3 + returnNum / 4);
+        const lineWidth = (this.penWidth = (this.penWidth / 4) * 3 + returnNum / 4);
         context.lineWidth = lineWidth * dpr;
       }
     },
@@ -524,6 +524,10 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  .sign-canvas {
+    display: block;
+    margin: 0 auto;
   }
 }
 </style>
