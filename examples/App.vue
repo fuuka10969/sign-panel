@@ -7,7 +7,7 @@
         :key="i"
         :class="['text-item', {'is-active': activeIndex === i}]"
       >
-        {{item}}
+        {{ item }}
       </div>
     </div>
     <sign-panel
@@ -23,6 +23,7 @@
     </div>
     <div class="button-footer">
       <button class="button" @click="canvasClear()">清空</button>
+      <button class="button" @click="downloadImg()">下载</button>
       <button class="button button-primary" :class="{'is-disabled': !signDone}" :disabled="!signDone" @click="submitImg()">提交</button>
     </div>
   </div>
@@ -54,6 +55,10 @@ export default {
       this.$refs.signPanel.canvasClear();
       this.imgList = []
       this.activeIndex = 0
+    },
+    // 下载
+    downloadImg() {
+      this.$refs.signPanel.downloadImg();
     },
 
     /**
