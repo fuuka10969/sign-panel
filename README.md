@@ -1,5 +1,6 @@
 # sign-panel 签名面板
 
+二次开发自：(https://github.com/langyuxiansheng/vue-sign-canvas)[https://github.com/langyuxiansheng/vue-sign-canvas]
 
 ## Attributes
 | 参数            | 说明     | 类型  | 可选值  | 默认值|
