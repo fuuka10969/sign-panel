@@ -37,3 +37,6 @@
 | canvasClear | 用于清空canvas内容           | - |
 | saveAsImg   | 返回canvas格式为base64的图片 | - |
 | downloadImg | 下载canvas上的图片           | - |
+
+
+SignPanelUni: uniapp下的写法

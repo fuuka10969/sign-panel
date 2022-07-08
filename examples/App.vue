@@ -34,7 +34,7 @@ import SignPanel from '../packages';
 export default {
   data() {
     return {
-      name: '测试试',
+      name: '',
       nameList: [],
       imgList: [],
       activeIndex: 0,
@@ -46,7 +46,16 @@ export default {
   },
   methods: {
     init() {
-      this.nameList = this.name.split('')
+      this.name = '测试试';
+      this.nameList = this.name.split('');
+      this.getVerifyTask();
+    },
+
+    // AI手绘图文校验服务API创建任务
+    getVerifyTask() {
+      setTimeout(() => {
+        this.taskId = '12345';
+      }, 1000)
     },
     /**
      * 清除画板
@@ -71,47 +80,33 @@ export default {
      */
     handleCompare(val) {
       if (val && this.imgList.length < this.nameList.length) {
-        // 验证签名是否正确
+        if (val && this.imgList.length < this.nameList.length) {
+          // 验证签名是否正确
           // const params = {
-          // }
-          // mailInvoice(params).then(res => {
-          //   // 本次校验成功
-          //   if(res.verifyResult) {
-          //     this.imgList.push(val)
-          //     this.activeIndex += 1
-          //     // if (this.imgList.length === this.nameList.length) {
-          //     //   alert('签名完成！')
-          //     // }
-          //   } else {
-          //     alert('未能识别您的签名内容，请使用正楷字体重新签署。')
-          //   }
-          // })
-
+          //   aiVerifyTaskId: this.taskId,
+          //   handDrawImageBase64: val,
+          //   nameNode: this.nameList[this.activeIndex],
+          // };
           setTimeout(() => {
-            // const params = {
-            //   aiVerifyTaskId: 2357605896748007460,
-            //   handDrawImageBase64: val,
-            //   nameNode: this.nameList[this.activeIndex]
-            // }
-
             const res = {
-              aiVerifyTaskId: this.taskId,
               verifyResult: true,
-              taskResult: 'success'
+              taskResult: false,
             }
+            // verifyResult 校验当前文字与手绘图片内容
             if (res.verifyResult) {
-              this.imgList.push(val)
-              this.activeIndex += 1
-              if (this.imgList.length === this.nameList.length) {
-                this.signDone = true
+              this.imgList.push(val);
+              this.activeIndex += 1;
+              // taskResult 整个手绘校验任务的校验结果
+              if (res.taskResult && this.imgList.length === this.nameList.length) {
+                this.isSuccess = true;
               }
             } else {
-              alert('未能识别您的签名内容<br>请使用正楷字体重新签署');
+              alert('签名无法识别, 请用正楷字体重新签署')
             }
-          }, 100);
+          }, 1000);
+        }
       }
     },
-
   },
   components: {
     'sign-panel': SignPanel
